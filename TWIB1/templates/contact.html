@@ -1,0 +1,235 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500&family=Mynerve&family=Poppins:wght@100;500&family=Plus+Jakarta+Sans:wght@300&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="{% static 'contact.css' %}">
+</head>
+
+<body>
+  <section class="landing__page">
+    <div class="main__logo">
+      <a href="{% url 'homepage' %}"><img src="{% static 'images/ThisIsWhyI_mBroke-removebg-preview.png' %}" class="header__img"></a>
+    </div>
+    <div class="openMenu"><i class="fa-solid fa-bars"></i></div>
+    <ul class="mainMenu">
+      <li><a href="{% url 'homepage' %}">Home</a></li>
+      <li><a href="/allgiftsguide/">Gift Blogs</a></li>
+      <!-- <li><a href="/submitaproduct/">Submit Product</a></li> -->
+      <li><a href="/contactus/">Contact</a></li>
+      <div class="closeMenu"><i class="fa-solid fa-xmark"></i></div>
+      <hr style="width: 90%;">
+      <span class="icons">
+        <i class="fa-brands fa-facebook-f"></i>
+        <i class="fa-brands fa-instagram"></i>
+        <i class="fa-brands fa-x-twitter"></i>
+      </span>
+    </ul>
+    <!-- Hamburger script -->
+
+    <script>
+      const mainMenu = document.querySelector('.mainMenu');
+      const closeMenu = document.querySelector('.closeMenu');
+      const openMenu = document.querySelector('.openMenu');
+      const menu_items = document.querySelectorAll('nav .mainMenu li a');
+
+      openMenu.addEventListener('click', show);
+      closeMenu.addEventListener('click', close);
+
+      // close menu when you click on a menu item 
+      menu_items.forEach(item => {
+        item.addEventListener('click', function () {
+          close();
+        })
+      })
+
+      function show() {
+        mainMenu.style.top = '0';
+      }
+      function close() {
+        mainMenu.style.top = '-120%';
+      }
+    </script>
+  </section>
+
+
+  <section class="search__drop" style="position: relative;">
+    <hr
+      style="z-index: 10; position: absolute;border: none;height: 9px;background-color: #221f45;width: 100%;display: flex;align-items: center;justify-content: center;">
+    <div class="drop__containers" style="z-index: 15;background-color: #FBE8DE;display: flex;">
+
+      <a href="{% url 'homepage' %}"
+        style="text-decoration: none;color: #221f45;align-items: center;display: flex;flex-direction: column;justify-content: center;row-gap: 10px;">
+        <i class="fa-solid fa-house"></i>
+        <button class="btn-5">WHATS NEW</button>
+      </a>
+
+      <div class="dropdown" onmouseover="showRecipientOptions()" onmouseout="hideRecipientOptions()">
+        <button class="dropbtn btn-1">
+          <i class="fa-solid fa-person"></i><br>
+          GIFTS BY RECIPTENT
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+          <a href="/men/">Men</a>
+          <a href="/women/">Women</a>
+          <a href="/dad/">Dad</a>
+          <a href="/mom/">Mom</a>
+          <a href="/allgiftsguide/kidsgifts/">Kids</a>
+          <a href="/teenboys/">Teens</a>
+          <a href="/allgiftsguide/grandmagifts/">Grandma</a>
+          <a href="/allgiftsguide/boyfriendgifts/">Boyfriend</a>
+          <a href="/allgiftsguide/girlfriendgifts/">Girlfriend</a>
+        </div>
+      </div>
+
+
+      <div class="dropdown">
+        <button class="dropbtn">
+          <i class="fa-solid fa-gift"></i><br>
+          GIFTS BY OCCASION
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+          <a href="/fathersday/">Father's Day</a>
+          <a href="/mothersday/">Mother's Day</a>
+          <a href="/valentinesday/">Valetines Day</a>
+          <a href="/allgiftsguide/anniversarygifts/">Anniversary</a>
+          <a href="/birthdaygift/">Birthday Gifts</a>
+          <a href="/allgiftsguide/graduationgifts/">Graduation</a>
+          <a href="/allgiftsguide/friendgivinggifts/">Friendship Day</a>
+          <a href="/allgiftsguide/weddinggifts/">Wedding</a>
+        </div>
+      </div>
+
+
+      <div class="dropdown">
+        <button class="dropbtn">
+          <i class="fa-solid fa-arrow-trend-up"></i><br>
+          TRENDING GIFTS
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+          <a href="/allgiftsguide/legogifts/">Lego</a>
+          <a href="/allgiftsguide/starwars/">Starwars</a>
+          <a href="/allgiftsguide/geekygifts/">Geek</a>
+          <a href="/allgiftsguide/travelgifts/">Gamers</a>
+          <a href="/allgiftsguide/foodiegifts/">Food</a>
+          <a href="/allgiftsguide/funnygifts/">Funny</a>
+          <a href="/allgiftsguide/carlovers/">Car Lovers</a>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="dropbtn">
+          <i class="fa-solid fa-gear"></i><br>
+          MORE CATEGORIES
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+          <a href="/allgiftsguide/">All Guides</a>
+          <a href="/contactus/">Contact Us</a>
+          <!-- <a href="/submitaproduct/">Submit a Product</a> -->
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <main>
+    <div class="main-contactussec">
+      <div class="about">
+        <img class="im" src="https://www.thisiswhyimbroke.com/assets/images/cash-in-hand-logo-large.png">
+        <div class="about-content">
+          <p>
+            <b>ThisIsWhyImBroke</b> is a free online magazine run by a bunch of
+            geeks who partake in way too much online window shopping. <br><br>
+            Our philosophy is simple: we only want to display the coolest stuff
+            you can find and buy on the web. We are not interested in spamming any
+            boring or lame products at you – when you visit ThisIsWhyImBroke
+            you’ll only see interesting, innovative, and often times very odd
+            products. <br><br>
+            Many items listed on this site do return a small commission for
+            product referral, however this is not the sole motivation for
+            featuring an item. Our staff regularly lists products that we receive
+            absolutely no compensation for.
+            <b>We do not carry any of the products listed on the site, nor do we
+              directly sell anything</b>.
+          </p>
+        </div>
+      </div>
+      <div class="contact">
+        <div class="contactcontainer">
+          <div class="leftconcontainer">
+            <img src="{% static 'images/contact_us_icon2.png' %}" alt="">
+            <form action="submit_form.php" method="post">
+              <label for="topic">What are you contacting us about?*</label>
+              <select id="topic" name="topic" required>
+                <option value="" disabled selected>General questions/inquiry</option>
+                <option value="issue">Report an issue/bug</option>
+                <option value="product">Suggestion/Critique</option>
+                <option value="product">Advertising</option>
+              </select>
+
+              <label for="name">Your name*</label>
+              <input type="text" id="name" name="name" required class="con-text">
+
+              <label for="email">Email Address*</label>
+              <input type="email" id="email" name="email" required class="con-email">
+
+              <label for="message">Your message*</label>
+              <textarea id="message" name="message" rows="4" required class="con-textarea"></textarea>
+
+
+
+              <input type="submit" value="SUBMIT" class="con-submit">
+            </form>
+          </div>
+          <div class="seperator">
+            <div class="sepborder"></div>
+          </div>
+          <div class="rightconcontainer">
+            <img class="cont__image" src="{% static 'images/undraw_Contact_us_re_4qqt (1).png' %}">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    </div>
+    <hr class="footer-separator">
+
+    <footer>
+      <div class="footer-content">
+        <div class="footer-top">
+          <div class="footer-text">
+            <p>
+              <img src="https://www.thisiswhyimbroke.com/assets/images/cash-in-hand-logo-large.png"
+                alt="This Is Why Im Broke logo" class="footer-logo">
+              THIS IS WHY IM BROKE
+            </p>
+            <h4>© 2023 ThisIsWhyImBroke. All rights reserved.</h4>
+            <div class="footer-links">
+              <a href="/contactus">Contact Us</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-disclaimer">
+          <p>
+            ThisIsWhyImBroke is reader supported, some products displayed may earn us a commission if you purchase
+            through our links. ThisIsWhyImBroke is a participant in the Amazon Services LLC Associates Program.<a
+              href=#>Learn more about how our site works.</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+  </main>
+</body>
+
+</html>
