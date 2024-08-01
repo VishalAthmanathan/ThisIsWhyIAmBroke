@@ -263,7 +263,7 @@ def men(request):
         a='men'
         para1 = "men"
         option1=Webpage.objects.filter(type='men').values()
-        option3=Content.objects.filter(Q(type='men') | Q(type='dad')|Q(type='teenboys')|Q(type='boyfriend')|Q(type='husband')).values()
+        option3=Content.objects.filter(Q(type='men') | Q(type='fathersdaygifts')|Q(type='gamergifts')|Q(type='boyfriendgifts')|Q(type='grandpagifts')).values()
 
         p = Paginator(option3,45)
         page = int(request.GET.get('page',1))
@@ -289,7 +289,7 @@ def women(request):
         a='women'
         print(loggedin)
         option1=Webpage.objects.filter(type='women').values()
-        option2=Content.objects.filter(Q(type='women')| Q(type='mothersday')|Q(type='teengirls')).values()
+        option2=Content.objects.filter(Q(type='wifegifts') | Q(type='mothersdaygifts')|Q(type='foodiegifts')|Q(type='girlfriendgifts')|Q(type='grandmagifts')).values()
         return render(request,'men3.html',{'values':option1,'value':option2,'val':option,'loggedin':loggedin})
 
 
@@ -482,7 +482,7 @@ def food(request):
         return func('food',request,max1,max2)
 
 def allgiftsguide(request):
-        mydata = Webpage.objects.all().values()
+        mydata = Webpage.objects.all().values().order_by("id").reverse()
         context={'mydata':mydata}  
         return render(request,'guides.html',context)
 
