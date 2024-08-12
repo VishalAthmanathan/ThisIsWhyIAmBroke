@@ -22,6 +22,8 @@ max2=300000
 
 
 def create_blog(request):
+    if(users != 'admin@gmail.com'):
+        return redirect('/home')
     if request.method == 'POST':
         title=request.POST.get('title')
         blogurl=request.POST.get('blogurl')
@@ -106,6 +108,7 @@ def check(request,genre=a):
                         'page' : page,
                         'loggedin':loggedin,
                         'userid':i,
+                        'useremail':users,
                 }
                 return render(request,'index1.html',context)
     return render(request,'index1.html')
