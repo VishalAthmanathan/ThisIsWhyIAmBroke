@@ -28,3 +28,12 @@ class User(models.Model):
     name=models.CharField(max_length=2080)
     password=models.CharField(max_length=200)
     products=models.TextField(default='9999')
+
+class Template(models.Model):
+    maintitle = models.CharField(max_length=1000)
+
+class Footer(models.Model):
+    desc = models.TextField(default='..')
+    copright = models.CharField(max_length=1000)
+    title = models.TextField(max_length=1000)
+    logo = models.TextField(max_length=2000)
